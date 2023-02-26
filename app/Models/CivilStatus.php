@@ -10,7 +10,7 @@ class CivilStatus extends Model
     use HasFactory;
 
     /**
-     * Get the profile associated with the user.
+     * Get the profile associated with the civil status.
      */
     public function profile()
     {

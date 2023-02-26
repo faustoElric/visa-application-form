@@ -9,12 +9,22 @@
                   {{ session('status') }}
               </div>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> Hay un problema, por favor verifique los campos.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card">
               <div class="card-header text-center font-weight-bold bg-dark-blue">
                 Perfil de Candidato - Aplicación a Visas
               </div>
               <div class="card-body">
-                <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-form')}}">
+                <form name="add-profile-form" id="add-profile-form" action="{{ route('candidate-form-store') }}" method="POST" enctype="multipart/form-data">
                  @csrf
                   <div class="form-group">
                     <label for="name">Nombres: </label>
@@ -32,8 +42,8 @@
                   </div>
                   <br>
                   <div class="form-group">
-                    <label for="civil_status">Estado civil: </label>
-                    <select name="civil_status" class="form-control">
+                    <label for="civil_status_id">Estado civil: </label>
+                    <select name="civil_status_id" class="form-control">
                         @foreach ($civilStatuses as $civilStatus)
                             <option value="{{ $civilStatus->id }}">{{ $civilStatus->name }}</option>
                         @endforeach
@@ -41,8 +51,8 @@
                   </div>
                   <br>
                   <div class="form-group">
-                    <label for="lastname">Nivel académico: </label>
-                    <select name="civil_status" class="form-control">
+                    <label for="academic_level_id">Nivel académico: </label>
+                    <select name="academic_level_id" class="form-control">
                         @foreach ($academicLevels as $academicLevel)
                             <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
                         @endforeach
@@ -65,23 +75,53 @@
                   </div>
                   <br>
                   <div class="form-group">
-                    <label for="english_listening_level_id">Inglés Listening: </label>
-                    <select name="english_listening_level_id" class="form-control">
-                        @foreach ($englishLevels as $englishLevel)
-                            <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
-                        @endforeach
-                    </select>
+                        <label><b>Inglés</b></label>
+                        <hr>
                   </div>
-                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="english_listening_level_id">Listening: </label>
+                            <select name="english_listening_level_id" class="form-control">
+                                @foreach ($englishLevels as $englishLevel)
+                                    <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
+                                @endforeach
+                            </select>
+                          </div>
+                          <br>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="english_speaking_level_id">Speaking: </label>
+                            <select name="english_speaking_level_id" class="form-control">
+                                @foreach ($englishLevels as $englishLevel)
+                                    <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
+                                @endforeach
+                            </select>
+                          </div>
+                          <br>
+                      </div>
+                  </div>
                   <div class="form-group">
-                    <label for="english_speaking_level_id">Inglés Speaking: </label>
-                    <select name="english_speaking_level_id" class="form-control">
-                        @foreach ($englishLevels as $englishLevel)
-                            <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
-                        @endforeach
-                    </select>
+                    <label><b>Hijos</b></label>
+                    <hr>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="children_live_with_me"> <var>Viven conmigo</var>: </label>
+                        <input type="number" id="children_live_with_me" name="children_live_with_me" class="form-control" required="" min="0">
+                      </div>
+                      <br>
                   </div>
-                  <br>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="children_dont_live_with_me">No viven conmigo: </label>
+                        <input type="number" id="children_dont_live_with_me" name="children_dont_live_with_me" class="form-control" required="" min="0">
+                      </div>
+                      <br>
+                  </div>
+              </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>

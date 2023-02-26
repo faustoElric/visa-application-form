@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +22,5 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\ProfileController::class, 'profileForm'])->name('candidate-form');
+Route::post('/candidate-form-store', [ProfileController::class, 'store'])->name('candidate-form-store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
