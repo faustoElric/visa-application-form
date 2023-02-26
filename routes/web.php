@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**Route::get('/', function () {
+    return view('candidate-form');
+});**/
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\ProfileController::class, 'profileForm'])->name('candidate-form');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
