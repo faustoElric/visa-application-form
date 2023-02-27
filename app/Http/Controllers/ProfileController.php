@@ -7,6 +7,10 @@ use App\Models\Profile;
 use App\Models\CivilStatus;
 use App\Models\AcademicLevel;
 use App\Models\EnglishLevel;
+use App\Models\Education;
+use App\Models\WorkExperience;
+use App\Models\Question;
+use App\Models\Answer;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
@@ -19,11 +23,17 @@ class ProfileController extends Controller
         $civilStatuses = CivilStatus::all();
         $academicLevels = AcademicLevel::all();
         $englishLevels = EnglishLevel::all();
+        $immigrationStatusQuestions = Question::where('section', 'Immigration Status')->get();
+        $healthQuestions = Question::where('section', 'Health')->get();
+        $skillsQuestions = Question::where('section', 'Skills')->get();
 
         return view('candidate-form')
             ->with('civilStatuses', $civilStatuses)
             ->with('academicLevels', $academicLevels)
-            ->with('englishLevels', $englishLevels);
+            ->with('englishLevels', $englishLevels)
+            ->with('immigrationStatusQuestions', $immigrationStatusQuestions)
+            ->with('healthQuestions', $healthQuestions)
+            ->with('skillsQuestions', $skillsQuestions);
     }
 
     /**
@@ -51,7 +61,7 @@ class ProfileController extends Controller
 
         $age = Carbon::parse($request->date_of_birth)->age;
 
-        Profile::create([
+        $profile = Profile::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
             'date_of_birth' => $request->date_of_birth,
@@ -66,6 +76,37 @@ class ProfileController extends Controller
             'children_live_with_me' => $request->children_live_with_me,
             'children_dont_live_with_me' => $request->children_dont_live_with_me,
         ]);
+
+        foreach ($request->input('school_names', []) as $i => $school_name) {
+            Education::create([
+                'profile_id' => $profile->id,
+                'school_name' => $school_name,
+                'year' => $request->input('years.' . $i),
+                'area' => $request->input('areas.' . $i),
+                'status' => $request->input('statuses.' . $i),
+                'education_level_id' => $request->input('education_level_ids.' . $i),
+            ]);
+        }
+
+        foreach ($request->input('positions', []) as $i => $position) {
+            WorkExperience::create([
+                'profile_id' => $profile->id,
+                'position' => $position,
+                'time_worked' => $request->input('times_worked.' . $i),
+                'date_worked' => $request->input('dates_worked.' . $i),
+                'company' => $request->input('companies.' . $i),
+                'activity' => $request->input('activities.' . $i),
+                'tool_used' => $request->input('tools_used.' . $i),
+            ]);
+        }
+
+        foreach ($request->input('question_ids', []) as $i => $question) {
+            Answer::create([
+                'profile_id' => $profile->id,
+                'question_id' => $question,
+                'answer' => $request->input('answers.' . $i),
+            ]);
+        }
 
         return redirect()->route('candidate-form')
                         ->with('success','Información registrada con éxito.');
