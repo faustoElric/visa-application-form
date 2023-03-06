@@ -23,7 +23,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header text-center font-weight-bold bg-dark-blue">
-                        Perfil de Candidato - Aplicación a Visas
+                        Perfil de Candidato
                     </div>
                     <div class="card-body">
                         <div class="form-group">
