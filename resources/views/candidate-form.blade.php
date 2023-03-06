@@ -146,18 +146,35 @@
                             </div>
                             <br>
                             <div class="input-group">
-                                <input type="text" class="form-control col-md-6" name="school_names[]" placeholder="Escuela / Univerdad" required>
-                                <input type="text" class="form-control col-md-6" name="years[]" placeholder="Año de estudio" required>
-                                <input type="text" class="form-control col-md-6" name="areas[]" placeholder="Área de estudio" required>
-                                <select name="statuses[]" class="form-control col-md-6">
-                                    <option value="1">Completo</option>
-                                    <option value="2">En Proceso</option>
-                                </select>
-                                <select name="education_level_ids[]" class="form-control col-md-6">
-                                    @foreach ($academicLevels as $academicLevel)
-                                        <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="item col-12">
+                                    <div class="row col-12">
+                                        <div class="col-md-4 mt-2 mb-2">
+                                            <input type="text" class="form-control col-md-6" name="school_names[]" placeholder="Escuela / Univerdad" required>
+                                        </div>
+                                        <div class="col-md-4 mt-2 mb-2">
+                                            <input type="text" class="form-control col-md-6" name="years[]" placeholder="Año de estudio" required>
+                                        </div>
+                                        <div class="col-md-4 mt-2 mb-2">
+                                            <input type="text" class="form-control col-md-6" name="areas[]" placeholder="Área de estudio" required>
+                                        </div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="col-md-6 mt-2 mb-2">
+                                            <select name="statuses[]" class="form-control col-md-6">
+                                                <option value="1">Completo</option>
+                                                <option value="2">En Proceso</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-2 mb-2">
+                                            <select name="education_level_ids[]" class="form-control col-md-6">
+                                                @foreach ($academicLevels as $academicLevel)
+                                                    <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -173,12 +190,31 @@
                             </div>
                             <br>
                             <div class="input-group">
-                                <input type="text" class="form-control col-md-6" name="positions[]" placeholder="Posición" required>
-                                <input type="text" class="form-control col-md-6" name="times_worked[]" placeholder="Tiempo trabajado" required>
-                                <input type="text" class="form-control col-md-6" name="dates_worked[]" placeholder="Fecha" required>
-                                <input type="text" class="form-control col-md-6" name="companies[]" placeholder="Compañia" required>
-                                <textarea class="form-control col-md-6" name="activities[]" placeholder="Responsabilidades / Tareas" required></textarea>
-                                <textarea class="form-control col-md-6" name="tools_used[]" placeholder="Herramientas utilizadas" required></textarea>
+                                <div class="item col-12">
+                                    <div class="row col-12">
+                                        <div class="col-md-3 mt-2 mb-2">
+                                            <input type="text" class="form-control" name="positions[]" placeholder="Posición" required>
+                                        </div>
+                                        <div class="col-md-3 mt-2 mb-2">
+                                            <input type="text" class="form-control" name="times_worked[]" placeholder="Tiempo trabajado" required>
+                                        </div>
+                                        <div class="col-md-3 mt-2 mb-2">
+                                            <input type="text" class="form-control" name="dates_worked[]" placeholder="Fecha" required>
+                                        </div>
+                                        <div class="col-md-3 mt-2 mb-2">
+                                            <input type="text" class="form-control" name="companies[]" placeholder="Compañia" required>
+                                        </div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="col-md-6 mt-2 mb-2">
+                                            <textarea class="form-control" name="activities[]" placeholder="Responsabilidades / Tareas" required></textarea>
+                                        </div>
+                                        <div class="col-md-6 mt-2 mb-2">
+                                            <textarea class="form-control col-md-6" name="tools_used[]" placeholder="Herramientas utilizadas" required></textarea>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                         <br>
