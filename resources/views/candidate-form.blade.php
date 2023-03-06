@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="container mt-4">
-            @if(session('status'))
+            @if(session('success'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div>
             @endif
             @if ($errors->any())
@@ -27,19 +27,19 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Nombres: </label>
+                            <label for="name">Nombres:</label>
                             <input type="text" id="name" name="name" class="form-control" required="">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="lastname">Apellidos: </label>
+                            <label for="lastname">Apellidos:</label>
                             <input type="text" id="lastname" name="lastname" class="form-control" required="">
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date_of_birth">Fecha de Nacimiento: </label>
+                                    <label for="date_of_birth">Fecha de Nacimiento:</label>
                                     <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required="">
                                 </div>
                                 <br>
@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="civil_status_id">Estado civil: </label>
+                                    <label for="civil_status_id">Estado civil:</label>
                                     <select name="civil_status_id" class="form-control">
                                         @foreach ($civilStatuses as $civilStatus)
                                             <option value="{{ $civilStatus->id }}">{{ $civilStatus->name }}</option>
@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="academic_level_id">Nivel académico: </label>
+                                    <label for="academic_level_id">Nivel académico:</label>
                                     <select name="academic_level_id" class="form-control">
                                         @foreach ($academicLevels as $academicLevel)
                                             <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
@@ -72,17 +72,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="desired_job">Trabajo deseado: </label>
+                            <label for="desired_job">Trabajo deseado:</label>
                             <input type="text" id="desired_job" name="desired_job" class="form-control" required="">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="city">Ciudad: </label>
+                            <label for="city">Ciudad:</label>
                             <input type="text" id="city" name="city" class="form-control" required="">
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="state">Estado: </label>
+                            <label for="state">Estado:</label>
                             <input type="text" id="state" name="state" class="form-control" required="">
                         </div>
                         <br>
@@ -93,7 +93,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_listening_level_id">Listening: </label>
+                                    <label for="english_listening_level_id">Listening:</label>
                                     <select name="english_listening_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
@@ -104,7 +104,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_speaking_level_id">Speaking: </label>
+                                    <label for="english_speaking_level_id">Speaking:</label>
                                     <select name="english_speaking_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
@@ -121,14 +121,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="children_live_with_me"> <var>Viven conmigo</var>: </label>
+                                    <label for="children_live_with_me"> <var>Viven conmigo</var>:</label>
                                     <input type="number" id="children_live_with_me" name="children_live_with_me" class="form-control" required="" min="0" value="0">
                                 </div>
                                 <br>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="children_dont_live_with_me">No viven conmigo: </label>
+                                    <label for="children_dont_live_with_me">No viven conmigo:</label>
                                     <input type="number" id="children_dont_live_with_me" name="children_dont_live_with_me" class="form-control" required="" min="0" value="0">
                                 </div>
                                 <br>
@@ -149,28 +149,43 @@
                                 <div class="item col-12">
                                     <div class="row col-12">
                                         <div class="col-md-4 mt-2 mb-2">
-                                            <input type="text" class="form-control col-md-6" name="school_names[]" placeholder="Escuela / Univerdad" required>
+                                            <div class="form-group">
+                                                <label for="school_names">Escuela / Universidad:</label>
+                                                <input type="text" class="form-control col-md-6" name="school_names[]" placeholder="Escuela / Univerdad" required>
+                                            </div>
                                         </div>
                                         <div class="col-md-4 mt-2 mb-2">
-                                            <input type="text" class="form-control col-md-6" name="years[]" placeholder="Año de estudio" required>
+                                            <div class="form-group">
+                                                <label for="years">Año de estudio:</label>
+                                                <input type="text" class="form-control col-md-6" name="years[]" placeholder="Año de estudio" required>
+                                            </div>
                                         </div>
                                         <div class="col-md-4 mt-2 mb-2">
-                                            <input type="text" class="form-control col-md-6" name="areas[]" placeholder="Área de estudio" required>
+                                            <div class="form-group">
+                                                <label for="areas">Área de estudio:</label>
+                                                <input type="text" class="form-control col-md-6" name="areas[]" placeholder="Área de estudio" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row col-12">
                                         <div class="col-md-6 mt-2 mb-2">
-                                            <select name="statuses[]" class="form-control col-md-6">
-                                                <option value="1">Completo</option>
-                                                <option value="2">En Proceso</option>
-                                            </select>
+                                            <div class="form-group">
+                                                <label for="status">Status:</label>
+                                                <select name="statuses[]" class="form-control col-md-6">
+                                                    <option value="1">Completo</option>
+                                                    <option value="2">En Proceso</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 mt-2 mb-2">
-                                            <select name="education_level_ids[]" class="form-control col-md-6">
-                                                @foreach ($academicLevels as $academicLevel)
-                                                    <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="form-group">
+                                                <label for="education_level_id">Nivel:</label>
+                                                <select name="education_level_ids[]" class="form-control col-md-6">
+                                                    @foreach ($academicLevels as $academicLevel)
+                                                        <option value="{{ $academicLevel->id }}">{{ $academicLevel->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr>
@@ -193,24 +208,42 @@
                                 <div class="item col-12">
                                     <div class="row col-12">
                                         <div class="col-md-3 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="positions[]" placeholder="Posición" required>
+                                            <div class="form-group">
+                                                <label for="position">Posición:</label>
+                                                <input type="text" class="form-control" name="positions[]" placeholder="Posición" required>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="times_worked[]" placeholder="Tiempo trabajado" required>
+                                            <div class="form-group">
+                                                <label for="time_worked">Tiempo trabajado:</label>
+                                                <input type="text" class="form-control" name="times_worked[]" placeholder="Tiempo trabajado" required>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="dates_worked[]" placeholder="Fecha" required>
+                                            <div class="form-group">
+                                                <label for="time_worked">Fecha:</label>
+                                                <input type="text" class="form-control" name="dates_worked[]" placeholder="Fecha" required>
+                                            </div>
                                         </div>
                                         <div class="col-md-3 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="companies[]" placeholder="Compañia" required>
+                                            <div class="form-group">
+                                                <label for="company">Compañia:</label>
+                                                <input type="text" class="form-control" name="companies[]" placeholder="Compañia" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row col-12">
                                         <div class="col-md-6 mt-2 mb-2">
-                                            <textarea class="form-control" name="activities[]" placeholder="Responsabilidades / Tareas" required></textarea>
+                                            <div class="form-group">
+                                                <label for="activity">Responsabilidades / Tareas:</label>
+                                                <textarea class="form-control" name="activities[]" placeholder="Responsabilidades / Tareas" required></textarea>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 mt-2 mb-2">
-                                            <textarea class="form-control col-md-6" name="tools_used[]" placeholder="Herramientas utilizadas" required></textarea>
+                                            <div class="form-group">
+                                                <label for="tool_used">Herramientas utilizadas:</label>
+                                                <textarea class="form-control col-md-6" name="tools_used[]" placeholder="Herramientas utilizadas" required></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr>
