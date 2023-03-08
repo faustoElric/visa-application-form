@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('age');
             $table->unsignedBigInteger('civil_status_id')->nullable();
+            $table->string('phone_number');
+            $table->string('email');
             $table->unsignedBigInteger('academic_level_id')->nullable();
             $table->string('desired_job');
             $table->string('city');

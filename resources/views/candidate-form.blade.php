@@ -59,6 +59,24 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="phone_number">Teléfono:</label>
+                                    <input type="text" id="phone_number" name="phone_number" class="form-control" required="">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico:</label>
+                                    <input type="email" id="email" name="email" class="form-control" required="">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="academic_level_id">Nivel académico:</label>
@@ -82,7 +100,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="state">Estado:</label>
+                            <label for="state">Departamento:</label>
                             <input type="text" id="state" name="state" class="form-control" required="">
                         </div>
                         <br>
@@ -93,7 +111,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_listening_level_id">Listening:</label>
+                                    <label for="english_listening_level_id">Escucha:</label>
                                     <select name="english_listening_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
@@ -104,7 +122,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_speaking_level_id">Speaking:</label>
+                                    <label for="english_speaking_level_id">Habla:</label>
                                     <select name="english_speaking_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>

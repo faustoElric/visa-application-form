@@ -15,6 +15,8 @@ class Profile extends Model
         'date_of_birth',
         'age',
         'civil_status_id',
+        'phone_number',
+        'email',
         'academic_level_id',
         'desired_job',
         'city',
@@ -24,8 +26,6 @@ class Profile extends Model
         'children_live_with_me',
         'children_dont_live_with_me',
     ];
-
-
 
     /**
      * Get the user that owns the profile.
