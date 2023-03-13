@@ -111,7 +111,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_listening_level_id">Escucha:</label>
+                                    <label for="english_listening_level_id">Nivel de escucha para idioma inglés:</label>
                                     <select name="english_listening_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="english_speaking_level_id">Habla:</label>
+                                    <label for="english_speaking_level_id">Nivel de habla para idioma inglés:</label>
                                     <select name="english_speaking_level_id" class="form-control">
                                         @foreach ($englishLevels as $englishLevel)
                                             <option value="{{ $englishLevel->id }}">{{ $englishLevel->name }}</option>
