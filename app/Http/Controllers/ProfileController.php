@@ -12,6 +12,8 @@ use App\Models\WorkExperience;
 use App\Models\Question;
 use App\Models\Answer;
 use Carbon\Carbon;
+use DataTables;
+use Yajra\DataTables\CollectionDataTable;
 
 class ProfileController extends Controller
 {
@@ -114,5 +116,84 @@ class ProfileController extends Controller
 
         return redirect()->route('candidate-form')
                         ->with('success','Información registrada con éxito.');
+    }
+
+    /**
+     * Candidates list
+     */
+    public function index(Request $request)
+    {
+        $profiles = Profile::all();
+        $civilStatuses = CivilStatus::all();
+        $academicLevels = AcademicLevel::all();
+
+        if ($request->ajax()) {
+
+            $data = Profile::select('*');
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->filter(function ($instance) use ($request) {
+                        if ($request->get('civil_status_id')) {
+                            $instance->where('civil_status_id', $request->get('civil_status_id'));
+                        }
+                        if ($request->get('academic_level_id')) {
+                            $instance->where('academic_level_id', $request->get('academic_level_id'));
+                        }
+                        if ($request->get('start_date') && $request->get('end_date')) {
+                            $instance->whereBetween('date_of_birth', [$request->get('start_date'), $request->get('end_date')]);
+                        }
+                        if ($request->get('start_date'))  {
+                            $instance->whereBetween('date_of_birth', [$request->get('start_date'), Carbon::now()->format('Y-m-d')]);
+                        }
+                        if ($request->get('end_date'))  {
+                            $instance->whereBetween('date_of_birth', ['1900-01-01', $request->get('end_date')]);
+                        }
+                        if (!empty($request->get('search'))) {
+                             $instance->where(function($w) use($request){
+                                $search = $request->get('search');
+                                $w->orWhere('name', 'LIKE', "%$search%")
+                                ->orWhere('email', 'LIKE', "%$search%");
+                            });
+                        }
+                    })
+                    ->addColumn('birthday', function ($data) {
+                        return Carbon::createFromFormat('Y-m-d', $data->date_of_birth)->format('d-m-Y');
+                    })
+                    ->addColumn('createdAt', function ($data) {
+                        return Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d-m-Y H:i:s');
+                    })
+                    ->addColumn('showProfile', function ($data) {
+                        return "<a href='" . url("admin/profiles", $data->id) ."'>Ver perfil</a>";
+                    })
+
+                    ->rawColumns(['showProfile', 'birthday', 'createdAt'])
+                    ->make(true);
+        }
+
+        return view('admin.profiles.index')
+            ->with('profiles', $profiles)
+            ->with('civilStatuses', $civilStatuses)
+            ->with('academicLevels', $academicLevels);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $profile = Profile::where('id', $id)
+                    ->with('civilStatus')
+                    ->with('academicLevel')
+                    ->with('englishLevel')
+                    ->with('educations')
+                    ->with('workExperiences')
+                    ->with('answers')
+                    ->first();
+
+        return view('admin.profiles.show', compact('profile'));
     }
 }

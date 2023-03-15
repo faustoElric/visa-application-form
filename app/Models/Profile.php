@@ -34,4 +34,44 @@ class Profile extends Model
     {
         return $this->belongsTo(CivilStatus::class);
     }
+
+    /**
+     * Get the academic level that has the profile.
+     */
+    public function academicLevel()
+    {
+        return $this->belongsTo(AcademicLevel::class);
+    }
+
+    /**
+     * Get the english level that has the profile.
+     */
+    public function englishLevel()
+    {
+        return $this->belongsTo(EnglishLevel::class);
+    }
+
+    /**
+     * Get the educations that has the profile.
+     */
+    public function educations()
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    /**
+     * Get the work experience that has the profile.
+     */
+    public function workExperiences()
+    {
+        return $this->hasMany(WorkExperience::class);
+    }
+
+    /**
+     * Get the answers that has the profile.
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

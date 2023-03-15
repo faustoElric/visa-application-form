@@ -18,4 +18,12 @@ class WorkExperience extends Model
         'activity',
         'tool_used',
     ];
+
+    /**
+     * Get the profile that has the Works Experiences.
+     */
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
 }

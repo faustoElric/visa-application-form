@@ -17,4 +17,20 @@ class Education extends Model
         'status',
         'education_level_id',
     ];
+
+    /**
+     * Get the profile that has the Educations.
+     */
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
+    /**
+     * Get the Academic Level that has the Education.
+     */
+    public function academicLevel()
+    {
+        return $this->belongsTo(AcademicLevel::class, 'education_level_id');
+    }
 }

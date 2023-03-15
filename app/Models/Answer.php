@@ -14,4 +14,20 @@ class Answer extends Model
         'question_id',
         'answer',
     ];
+
+    /**
+     * Get the profile that has the Answers.
+     */
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
+    /**
+     * Get the question that has the Answers.
+     */
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }
