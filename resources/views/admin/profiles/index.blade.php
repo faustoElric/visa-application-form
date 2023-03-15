@@ -40,13 +40,13 @@
                                 <br><br>
                                 <div class="row">
                                     <div class="col-12 col-md-2">
-                                        <label><strong>Fecha inicio:</strong></label>
+                                        <label><strong>Desde:</strong></label>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <input type="date" id="start_date" name="start_date" class="form-control" required="">
                                     </div>
                                     <div class="col-12 col-md-2">
-                                        <label><strong>Fecha fin:</strong></label>
+                                        <label><strong>Hasta:</strong></label>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <input type="date" id="end_date" name="end_date" class="form-control" required="">
