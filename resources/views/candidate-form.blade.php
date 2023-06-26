@@ -22,7 +22,7 @@
             <form name="add-profile-form" id="add-profile-form" action="{{ route('candidate-form-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Perfil de Candidato
                     </div>
                     <div class="card-body">
@@ -152,14 +152,14 @@
                                 <br>
                             </div>
                         </div>
-                        <div class="card-header text-center font-weight-bold bg-dark-blue">
+                        <div class="card-header text-center font-weight-bold bg-orange">
                             Educación o Entrenamiento
                         </div>
                         <br>
                         <div id="education-form">
                             <div class="row">
                                 <div class="col-12 text-rigth">
-                                    <a class="clone-education btn btn-secondary btn-sm">+ Agregar estudio</a>
+                                    <a class="clone-education btn btn-sm btn-orange">+ Agregar estudio</a>
                                 </div>
                             </div>
                             <br>
@@ -211,14 +211,14 @@
                             </div>
                         </div>
                         <br>
-                        <div class="card-header text-center font-weight-bold bg-dark-blue">
+                        <div class="card-header text-center font-weight-bold bg-orange">
                             Experiencia laboral
                         </div>
                         <br>
                         <div id="work-experience-form">
                             <div class="row">
                                 <div class="col-12 text-rigth">
-                                    <a class="clone-work-experience btn btn-secondary btn-sm">+ Agregar experiencia laboral</a>
+                                    <a class="clone-work-experience btn btn-sm btn-orange">+ Agregar experiencia laboral</a>
                                 </div>
                             </div>
                             <br>
@@ -269,7 +269,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="card-header text-center font-weight-bold bg-dark-blue">
+                        <div class="card-header text-center font-weight-bold bg-orange">
                             Estatus migratorio
                         </div>
                         <br>
@@ -292,7 +292,7 @@
                             @endforeach
                         </div>
                         <br>
-                        <div class="card-header text-center font-weight-bold bg-dark-blue">
+                        <div class="card-header text-center font-weight-bold bg-orange">
                             Salud
                         </div>
                         <br>
@@ -315,7 +315,7 @@
                             @endforeach
                         </div>
                         <br>
-                        <div class="card-header text-center font-weight-bold bg-dark-blue">
+                        <div class="card-header text-center font-weight-bold bg-orange">
                             Habilidades
                         </div>
                         <br>
@@ -337,7 +337,7 @@
                             </div>
                             @endforeach
                         </div>
-                        <button type="submit" class="btn bg-dark-blue">Guardar datos</button>
+                        <button type="submit" class="btn btn-orange">Guardar datos</button>
                         {{--  --}}
                     </div>
                 </div>

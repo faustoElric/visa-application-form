@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-3 margin-tb">
                 <div class="pull-right">
-                    <a class="btn btn-primary bg-dark-blue" href="{{ route('admin.profiles.index') }}">
+                    <a class="btn btn-orange" href="{{ route('admin.profiles.index') }}">
                         Regresar
                     </a>
                 </div>
@@ -21,7 +21,7 @@
         <br>
         <div class="container mt-4">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-dark-blue">
+                <div class="card-header text-center font-weight-bold bg-orange">
                     Datos Personales
                 </div>
                 <div class="card-body">
@@ -135,7 +135,7 @@
                             <br>
                         </div>
                     </div>
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Educación o Entrenamiento
                     </div>
                     <br>
@@ -184,7 +184,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Experiencia laboral
                     </div>
                     <br>
@@ -239,7 +239,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Estatus migratorio
                     </div>
                     <br>
@@ -258,7 +258,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Salud
                     </div>
                     <br>
@@ -277,7 +277,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-dark-blue">
+                    <div class="card-header text-center font-weight-bold bg-orange">
                         Habilidades
                     </div>
                     <br>
@@ -302,7 +302,7 @@
         <div class="row">
             <div class="col-md-3 margin-tb mt-4">
                 <div class="pull-right">
-                    <a class="btn btn-primary bg-dark-blue" href="{{ route('admin.profiles.index') }}">
+                    <a class="btn btn-orange" href="{{ route('admin.profiles.index') }}">
                         Regresar
                     </a>
                 </div>

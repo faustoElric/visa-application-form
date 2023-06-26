@@ -19,9 +19,19 @@
 </head>
 <body>
     <div id="app">
-        <main class="py-4">
+        <div class="bg-purple">
+            <div class="col-12 col-md-offset-2 pt-4 pb-4 text-center">
+                <img src="{{url('storage/images/Logo-search-latam-header.png')}}" class="img-fluid">
+            </div>
+        </div>
+        <main>
             @yield('content')
         </main>
+        <footer class="bg-purple mt-4">
+            <div class="col-12 pt-4 pb-4 text-center">
+                <p>Todos los derechos reservados © {{ now()->year }}</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Outfit');
 
 // Variables
 @import 'variables';
@@ -7,7 +7,56 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-.bg-dark-blue {
-    background-color: #03104e;
+body {
+    font-family: 'Outfit';
+}
+
+footer {
+    font-size: medium;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+table a {
+    color: #382553;
+}
+
+.bg-orange {
+    font-family: 'Outfit';
+    font-size: large;
+    font-weight: bold;
+    background-color: #de3a33;
+    color: #fff;
+}
+
+.btn-orange {
+    font-family: 'Outfit';
+    font-size: medium;
+    font-weight: 700;
+    background-color: #de3a33;
+    color: #fff;
+}
+
+.btn-orange:hover {
+    background-color: #382553;
+    color: #fff;
+}
+
+.bg-purple, .bg-purple a, .page-link.active, .active > .page-link{
+    background-color: #382553;
+    color: #fff;
+}
+
+.btn-purple {
+    font-family: 'Outfit';
+    font-size: medium;
+    font-weight: 700;
+    background-color: #382553;
+    color: #fff;
+}
+
+.btn-purple:hover {
+    background-color: #de3a33;
     color: #fff;
 }

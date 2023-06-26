@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-dark-blue">
+                <div class="card-header text-center font-weight-bold bg-orange">
                     Filtros de búsqueda
                 </div>
                 <div class="card-body">
@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 mt-4">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-dark-blue">
+                <div class="card-header text-center font-weight-bold bg-orange">
                     Resultados
                 </div>
             </div>
