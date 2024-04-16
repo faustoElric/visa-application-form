@@ -19,44 +19,60 @@ footer {
 }
 
 table a {
-    color: #382553;
+    //olor: #382553;
+    color: #0B446D;
 }
 
-.bg-orange {
+.bg-yellow {
     font-family: 'Outfit';
     font-size: large;
     font-weight: bold;
-    background-color: #de3a33;
-    color: #fff;
+    background-color: #E6EF31;
+    color: #000;
 }
 
-.btn-orange {
+.btn-yellow {
     font-family: 'Outfit';
     font-size: medium;
     font-weight: 700;
-    background-color: #de3a33;
+    background-color: #E6EF31;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.btn-yellow:hover {
+    background-color: #0B446D;
+    color: #fff;
+    border: 2px solid #0B446D;
+}
+
+.bg-blue, .bg-blue a, .page-link.active, .active > .page-link{
+    background-color: #0B446D;
     color: #fff;
 }
 
-.btn-orange:hover {
-    background-color: #382553;
-    color: #fff;
-}
-
-.bg-purple, .bg-purple a, .page-link.active, .active > .page-link{
-    background-color: #382553;
-    color: #fff;
-}
-
-.btn-purple {
+.btn-blue {
     font-family: 'Outfit';
     font-size: medium;
     font-weight: 700;
-    background-color: #382553;
+    background-color: #0B446D;
     color: #fff;
+    border: 2px solid #0B446D;
 }
 
-.btn-purple:hover {
-    background-color: #de3a33;
+.btn-blue:hover {
+    background-color: #E6EF31;
+    //color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.bg-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.bg-black {
+    background-color: #000;
     color: #fff;
 }

@@ -13,7 +13,7 @@ class EnglishLevelsSeeder extends Seeder
     public function run(): void
     {
         EnglishLevel::create([
-            'name' => 'No'
+            'name' => 'Nulo'
         ]);
         EnglishLevel::create([
             'name' => 'Básico'
@@ -23,9 +23,6 @@ class EnglishLevelsSeeder extends Seeder
         ]);
         EnglishLevel::create([
             'name' => 'Avanzado'
-        ]);
-        EnglishLevel::create([
-            'name' => 'Bilingüe'
         ]);
     }
 }

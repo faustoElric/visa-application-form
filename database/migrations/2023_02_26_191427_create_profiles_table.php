@@ -17,17 +17,21 @@ return new class extends Migration
             $table->string('lastname');
             $table->date('date_of_birth');
             $table->string('age');
-            $table->unsignedBigInteger('civil_status_id')->nullable();
             $table->string('phone_number');
             $table->string('email');
             $table->unsignedBigInteger('academic_level_id')->nullable();
             $table->string('desired_job');
             $table->string('city');
             $table->string('state');
-            $table->unsignedBigInteger('english_listening_level_id')->nullable();
-            $table->unsignedBigInteger('english_speaking_level_id')->nullable();
+            $table->unsignedBigInteger('english_level_id')->nullable();
             $table->string('children_live_with_me');
             $table->string('children_dont_live_with_me');
+            $table->string('dui');
+            $table->enum("visa_type", ["1-H2B", "2-H2A"]);
+            $table->boolean('has_passport');
+            $table->enum("gender", ["Masculino", "Femenino"]);
+            $table->enum("employment_status", ["Desempleado", "Empleado","Emprendedor"]);
+            $table->string("information_obtained_by");
             $table->timestamps();
         });
     }

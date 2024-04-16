@@ -18,7 +18,12 @@ class QuestionsSeeder extends Seeder
             'type' => 'radio'
         ]);
         Question::create([
-            'question' => 'Posee una visa valida de Estados Unidos?',
+            'question' => 'Posee o ha tenido alguna VISA válida para Estados Unidos?',
+            'section' => 'Immigration Status',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => 'Familiares en USA?',
             'section' => 'Immigration Status',
             'type' => 'radio'
         ]);
@@ -81,6 +86,31 @@ class QuestionsSeeder extends Seeder
             'question' => 'Explique (Opcional)',
             'section' => 'Health',
             'type' => 'textarea'
+        ]);
+        Question::create([
+            'question' => 'Alergias?',
+            'section' => 'Health',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => 'Dificultad visual?',
+            'section' => 'Health',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => 'Dificultad motora?',
+            'section' => 'Health',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => 'Recibió la vacuna?',
+            'section' => 'Health',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => 'Número de dosis',
+            'section' => 'Health',
+            'type' => 'number'
         ]);
         Question::create([
             'question' => 'Puede leer y escribir?',

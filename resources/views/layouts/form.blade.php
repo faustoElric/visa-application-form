@@ -19,15 +19,18 @@
 </head>
 <body>
     <div id="app">
-        <div class="bg-purple">
-            <div class="col-12 col-md-offset-2 pt-4 pb-4 text-center">
-                <img src="{{url('storage/images/Logo-search-latam-header.png')}}" class="img-fluid">
+        <div class="bg-white row">
+            <div class="col-6 col-md-4 offset-md-2 pt-4 pb-4 text-center">
+                <img src="{{url('storage/images/usaid_logo.svg')}}" class="img-fluid">
+            </div>
+            <div class="col-6 col-md-4 pt-4 pb-4 text-center">
+                <img src="{{url('storage/images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid">
             </div>
         </div>
         <main>
             @yield('content')
         </main>
-        <footer class="bg-purple mt-4">
+        <footer class="bg-black mt-4">
             <div class="col-12 pt-4 pb-4 text-center">
                 <p>Todos los derechos reservados © {{ now()->year }}</p>
             </div>

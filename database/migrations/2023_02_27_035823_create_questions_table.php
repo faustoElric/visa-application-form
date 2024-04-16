@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->enum("section", ["Immigration Status", "Health", "Skills"]);
-            $table->enum("type", ["radio", "textarea"]);
+            $table->enum("type", ["radio", "textarea","number"]);
             $table->timestamps();
         });
     }
