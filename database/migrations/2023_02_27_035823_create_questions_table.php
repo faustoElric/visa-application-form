@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->enum("section", ["Immigration Status", "Health", "Skills"]);
-            $table->enum("type", ["radio", "textarea","number"]);
+            $table->text('description')->nullable();
+            $table->enum("section", ["Immigration Status", "Health", "Skills", "General"]);
+            $table->enum("type", ["text","radio", "textarea","number","select"]);
+            $table->json("question_json_items")->nullable();
             $table->timestamps();
         });
     }

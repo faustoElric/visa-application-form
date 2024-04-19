@@ -6,8 +6,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:title" content="Programa de Movilidad Laboral Visas H-2">
+    <meta property="og:description" content="Programa de Movilidad Laboral Visas H-2">
+    <meta property="og:image" content="{{url('images/usaid_logo.png')}}">
+    <meta name="viewport" content="width=device-width">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Programa de Movilidad Laboral Visas H-2') }}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/images/usaid_favicon.png') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,11 +25,12 @@
 <body>
     <div id="app">
         <div class="bg-white row">
-            <div class="col-6 col-md-4 offset-md-2 pt-4 pb-4 text-center">
-                <img src="{{url('storage/images/usaid_logo.svg')}}" class="img-fluid">
+            <div class="col-4 offset-2 col-md-3 offset-md-3 col-xl-2 offset-xl-4 pt-4 pb-4 text-center">
+                <br>
+                <img src="{{url('images/usaid_logo.png')}}" class="img-fluid" id="usaid">
             </div>
-            <div class="col-6 col-md-4 pt-4 pb-4 text-center">
-                <img src="{{url('storage/images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid">
+            <div class="col-4 offset-2 col-md-3 offset-md-0 col-xl-2 pt-4 pb-4 text-center">
+                <img src="{{url('images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid" id="mre">
             </div>
         </div>
         <main>
@@ -38,3 +44,13 @@
     </div>
 </body>
 </html>
+<style>
+    @media all and (max-width: 768px){
+        #mre{
+            margin-left: -100%;
+        }
+        #usaid{
+            margin-top: -15%;
+        }
+    }
+    </style>

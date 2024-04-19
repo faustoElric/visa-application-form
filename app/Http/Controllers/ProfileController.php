@@ -11,6 +11,8 @@ use App\Models\Education;
 use App\Models\WorkExperience;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\State;
+use App\Models\Township;
 use Carbon\Carbon;
 use DataTables;
 use Yajra\DataTables\CollectionDataTable;
@@ -25,17 +27,21 @@ class ProfileController extends Controller
         $civilStatuses = CivilStatus::all();
         $academicLevels = AcademicLevel::all();
         $englishLevels = EnglishLevel::all();
+        $states = State::all();
         $immigrationStatusQuestions = Question::where('section', 'Immigration Status')->get();
         $healthQuestions = Question::where('section', 'Health')->get();
         $skillsQuestions = Question::where('section', 'Skills')->get();
+        $generalQuestions = Question::where('section', 'General')->get();
 
         return view('candidate-form')
             ->with('civilStatuses', $civilStatuses)
             ->with('academicLevels', $academicLevels)
             ->with('englishLevels', $englishLevels)
+            ->with('states', $states)
             ->with('immigrationStatusQuestions', $immigrationStatusQuestions)
             ->with('healthQuestions', $healthQuestions)
-            ->with('skillsQuestions', $skillsQuestions);
+            ->with('skillsQuestions', $skillsQuestions)
+            ->with('generalQuestions', $generalQuestions);
     }
 
     /**
@@ -51,11 +57,11 @@ class ProfileController extends Controller
             'lastname' => 'required',
             'date_of_birth' => 'required',
             'phone_number' => 'required',
+            'secondary_phone_number' => 'required',
             'email' => 'required',
             'academic_level_id' => 'required',
-            'desired_job' => 'required',
-            'city' => 'required',
-            'state' => 'required',
+            'state_id' => 'required',
+            'township_id' => 'required',
             'english_level_id' => 'required',
             'children_live_with_me' => 'required',
             'children_dont_live_with_me' => 'required',
@@ -64,7 +70,6 @@ class ProfileController extends Controller
             'has_passport'  => 'required',
             'gender'  => 'required',
             'employment_status'  => 'required',
-            'information_obtained_by'  => 'required',
         ]);
 
         $age = Carbon::parse($request->date_of_birth)->age;
@@ -75,11 +80,11 @@ class ProfileController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'age' => $age,
             'phone_number' => $request->phone_number,
+            'secondary_phone_number' => $request->secondary_phone_number,
             'email' => $request->email,
             'academic_level_id' => $request->academic_level_id,
-            'desired_job' => $request->desired_job,
-            'city' => $request->city,
-            'state' => $request->state,
+            'state_id' => $request->state_id,
+            'township_id' => $request->township_id,
             'english_level_id' => $request->english_level_id,
             'children_live_with_me' => $request->children_live_with_me,
             'children_dont_live_with_me' => $request->children_dont_live_with_me,
@@ -88,7 +93,6 @@ class ProfileController extends Controller
             'has_passport'  => $request->has_passport,
             'gender'  => $request->gender,
             'employment_status'  => $request->employment_status,
-            'information_obtained_by'  => $request->information_obtained_by,
         ]);
 
         foreach ($request->input('school_names', []) as $i => $school_name) {
@@ -107,7 +111,8 @@ class ProfileController extends Controller
                 'profile_id' => $profile->id,
                 'position' => $position,
                 'time_worked' => $request->input('times_worked.' . $i),
-                'date_worked' => $request->input('dates_worked.' . $i),
+                'start_date_worked' => $request->input('start_date_worked.' . $i),
+                'end_date_worked' => $request->input('end_date_worked.' . $i),
                 'company' => $request->input('companies.' . $i),
                 'activity' => $request->input('activities.' . $i),
                 'tool_used' => $request->input('tools_used.' . $i),
@@ -203,5 +208,21 @@ class ProfileController extends Controller
                     ->first();
 
         return view('admin.profiles.show', compact('profile'));
+    }
+
+    public function checkingDUI($dui) {
+        $dui = Profile::where('dui', $dui);
+
+        if ($dui->count() > 0) {
+            return response()->json([
+                'status'=> 'success',
+                'statusCode'=> 200
+            ]);
+        } else {
+            return response()->json([
+                'status'=> 'fail',
+                'statusCode'=> 404
+            ]);
+        }
     }
 }

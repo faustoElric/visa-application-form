@@ -103,16 +103,6 @@ class QuestionsSeeder extends Seeder
             'type' => 'radio'
         ]);
         Question::create([
-            'question' => 'Recibió la vacuna?',
-            'section' => 'Health',
-            'type' => 'radio'
-        ]);
-        Question::create([
-            'question' => 'Número de dosis',
-            'section' => 'Health',
-            'type' => 'number'
-        ]);
-        Question::create([
             'question' => 'Puede leer y escribir?',
             'section' => 'Skills',
             'type' => 'radio'
@@ -125,7 +115,8 @@ class QuestionsSeeder extends Seeder
         Question::create([
             'question' => 'Posee licencia de manejar valida?',
             'section' => 'Skills',
-            'type' => 'radio'
+            'type' => 'select',
+            'question_json_items' => json_encode(['No tengo licencia de conducir vigente', 'Sí, poseo licencia liviana','Sí, poseo licencia particular', 'Sí, poseo licencia para moto', 'Sí, poseo licencia pesada'])
         ]);
         Question::create([
             'question' => 'Puede mantener una conversación en inglés?',
@@ -146,6 +137,35 @@ class QuestionsSeeder extends Seeder
             'question' => 'Notes:',
             'section' => 'Skills',
             'type' => 'textarea'
+        ]);
+        Question::create([
+            'question' => '¿Eres retornado del Programa?',
+            'description' => 'Responde Sí si has trabajado anteriormente con una compañía estadounidense a través del Programa de Movilidad Laboral',
+            'section' => 'General',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => '¿Posee las vacunas contra el COVID-19?',
+            'section' => 'Health',
+            'type' => 'select',
+            'question_json_items' => json_encode(['No poseo', 'Una dosis','Dos dosis', 'Tres dosis', 'Cuatro dosis'])
+        ]);
+        Question::create([
+            'question' => '¿Has manejado tractores o minitractores anteriormente?',
+            'section' => 'Skills',
+            'type' => 'radio'
+        ]);
+        Question::create([
+            'question' => '¿Cuál es su nivel en el uso de computadoras y paquetes de Office?',
+            'section' => 'Skills',
+            'type' => 'select',
+            'question_json_items' => json_encode(['Nulo', 'Básico','Intermedio', 'Avanzado'])
+        ]);
+        Question::create([
+            'question' => '¿Dónde se enteró del programa?',
+            'section' => 'General',
+            'type' => 'select',
+            'question_json_items' => json_encode(['Redes sociales', 'Municipalidad','Un amigo', 'Internet', 'Institución Educativa', 'Institución de Gobierno', 'Otros'])
         ]);
     }
 }

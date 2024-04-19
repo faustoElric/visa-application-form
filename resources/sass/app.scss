@@ -67,6 +67,22 @@ table a {
     border: 2px solid #000;
 }
 
+.btn-black {
+    font-family: 'Outfit';
+    font-size: medium;
+    font-weight: 700;
+    background-color: #000000;
+    color: #fff;
+    border: 2px solid #000000;
+}
+
+.btn-black:hover {
+    background-color: #E6EF31;
+    //color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
 .bg-white {
     background-color: #fff;
     color: #000;
@@ -75,4 +91,29 @@ table a {
 .bg-black {
     background-color: #000;
     color: #fff;
+}
+
+.modal {
+    background-color: #fff;
+}
+
+.modal h3 {
+    font-family: 'Outfit';
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.modal h5 {
+    font-family: 'Outfit';
+    font-size: 18px;
+    text-align: left;
+    font-weight:600
+}
+
+.modal p, .modal li  {
+    font-family: 'Outfit';
+    font-size: 18px;
+    text-align: left;
+    font-weight: 400;
 }

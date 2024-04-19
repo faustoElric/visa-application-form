@@ -21,6 +21,9 @@
             @endif
             <form name="add-profile-form" id="add-profile-form" action="{{ route('candidate-form-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <br>
+                <h5 class="text-center">¡Muchas gracias por tu interés! Por favor llena el siguiente formulario, estaremos notificandote los resultados pronto.</h5>
+                <br>
                 <div class="card">
                     <div class="card-header text-center font-weight-bold bg-blue">
                         Perfil de Candidato
@@ -60,7 +63,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="date_of_birth">DOB (Fecha de Nacimiento):</label>
-                                    <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required="">
+                                    <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" placeholder="dd-mm-yyyy" required="">
                                 </div>
                                 <br>
                             </div>
@@ -87,8 +90,25 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group">
-                                    <label for="phone_number">Teléfono:</label>
+                                    <label for="phone_number">Número de Teléfono:</label>
                                     <input type="text" id="phone_number" name="phone_number" class="form-control" required="">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="secondary_phone_number">Número de Teléfono secundario</label><br>
+                                    <small>(Proporcione el número de un familiar en caso de que presente problemas de señal u otros inconvenientes)</small>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <input type="text" id="secondary_phone_number" name="secondary_phone_number" class="form-control" required="">
                                 </div>
                                 <br>
                             </div>
@@ -115,21 +135,30 @@
                                 <br>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="desired_job">Trabajo deseado:</label>
-                            <input type="text" id="desired_job" name="desired_job" class="form-control" required="">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="state_id">Departamento:</label>
+                                    <select id="state_id" name="state_id" class="form-control">
+                                        @foreach ($states as $state)
+                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
                         </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="city">Ciudad:</label>
-                            <input type="text" id="city" name="city" class="form-control" required="">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="township_id">Municipio:</label>
+                                    <select id="township_id" name="township_id" class="form-control">
+                                        <option disabled>-- Por favor seleccione un Departamento --</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
                         </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="state">Departamento:</label>
-                            <input type="text" id="state" name="state" class="form-control" required="">
-                        </div>
-                        <br>
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group">
@@ -252,15 +281,44 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="input-group">
+                            <div class="input-group work-experience-item-0">
                                 <div class="item col-12">
                                     <div class="row col-12">
-                                        <div class="col-md-3 mt-2 mb-2">
+                                        <div class="col-md-12 mt-2 mb-2">
                                             <div class="form-group">
                                                 <label for="position">Posición:</label>
-                                                <input type="text" class="form-control" name="positions[]" placeholder="Posición" required>
+                                                <select name="positions[]" class="form-control col-md-6" required>
+                                                    <option value="Agricultura">Agricultura</option>
+                                                    <option value="Actividades de hostelería">Actividades de hostelería</option>
+                                                    <option value="Actividades profesionales/científicas y técnicas">Actividades profesionales/científicas y técnicas</option>
+                                                    <option value="Aeronáutica">Aeronáutica</option>
+                                                    <option value="Área artística (entretenimiento o recreacional)">Área artística (entretenimiento o recreacional)</option>
+                                                    <option value="Área de comunicación o IT">Área de comunicación o IT</option>
+                                                    <option value="Área de empacado y almacenamiento">Área de empacado y almacenamiento</option>
+                                                    <option value="Área de finanzas o seguros">Área de finanzas o seguros</option>
+                                                    <option value="Área de montaje de ferias y carnavales">Área de montaje de ferias y carnavales</option>
+                                                    <option value="Bartender">Bartender</option>
+                                                    <option value="Construcción">Construcción</option>
+                                                    <option value="Costura">Costura</option>
+                                                    <option value="Cuidado de adultos mayores o niños">Cuidado de adultos mayores o niños</option>
+                                                    <option value="Enfermería/cuidados de salud">Enfermería/cuidados de salud</option>
+                                                    <option value="Jardínería y paisajismo">Jardínería y paisajismo</option>
+                                                    <option value="Mantenimiento eléctrico/ industrial, etc">Mantenimiento eléctrico/ industrial, etc</option>
+                                                    <option value="Mantenimiento de Torres Comunicacionales">Mantenimiento de Torres Comunicacionales</option>
+                                                    <option value="Operario de fábrica">Operario de fábrica</option>
+                                                    <option value="Pesca">Pesca</option>
+                                                    <option value="Servicio de Transporte">Servicio de Transporte</option>
+                                                    <option value="Servicio administrativos o de apoyo">Servicio administrativos o de apoyo</option>
+                                                    <option value="Servicios de cocina">Servicios de cocina</option>
+                                                    <option value="Servicios de limpieza">Servicios de limpieza</option>
+                                                    <option value="Servicios de vigilancia">Servicios de vigilancia</option>
+                                                    <option value="Tour Operador">Tour Operador</option>
+                                                    <option value="Ventas minorista/mayorista/distribuidor">Ventas minorista/mayorista/distribuidor</option>
+                                                </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row col-12">
                                         <div class="col-md-3 mt-2 mb-2">
                                             <div class="form-group">
                                                 <label for="time_worked">Tiempo trabajado:</label>
@@ -269,9 +327,17 @@
                                         </div>
                                         <div class="col-md-3 mt-2 mb-2">
                                             <div class="form-group">
-                                                <label for="time_worked">Fecha:</label>
-                                                <input type="text" class="form-control" name="dates_worked[]" placeholder="Fecha" required>
+                                                <label for="start_date_worked">Fecha Inicio:</label>
+                                                <input type="date" name="start_date_worked[]" class="form-control" placeholder="dd-mm-yyyy" required="">
                                             </div>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-3 mt-2 mb-2">
+                                            <div class="form-group">
+                                                <label for="end_date_worked">Fecha de Finalización:</label>
+                                                <input type="date" name="end_date_worked[]" class="form-control" placeholder="dd-mm-yyyy" required="">
+                                            </div>
+                                            <br>
                                         </div>
                                         <div class="col-md-3 mt-2 mb-2">
                                             <div class="form-group">
@@ -294,6 +360,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row col-12">
+                                        <div class="col-12mt-2 mb-2">
+                                            <div class="form-group text-end">
+                                                <a id="removeWorkExperienceItem[]" class="btn btn-black mt-2 btn-work-experience-remove-item-0">Eliminar Experiencia</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <hr>
                                 </div>
                             </div>
@@ -312,10 +385,18 @@
                                     @if ($question->type == 'radio')
                                         <input type="radio" name="answers[{{ $question->id }}]" value="Si" required> Si
                                         <input type="radio" name="answers[{{ $question->id }}]" value="No" required> No
+                                    @elseif ($question->type == 'number')
+                                        <input type="number" name="answers[{{ $question->id }}]" min="0" required class="form-control">
+                                    @elseif ($question->type == "select")
+                                        <select name="answers[{{ $question->id }}]" class="form-control" required>
+                                            @foreach (json_decode($question->question_json_items) as $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
                                     @else
                                         <textarea name="answers[{{ $question->id }}]" class="form-control"></textarea>
                                     @endif
-                                    <input type="hidden" name="question_ids[{{ $question->id }}]" value="{{ $question->id }}">
+                                        <input type="hidden" name="question_ids[{{ $question->id }}]" value="{{ $question->id }}">
                                 </div>
                                 <br>
                             </div>
@@ -337,6 +418,12 @@
                                         <input type="radio" name="answers[{{ $question->id }}]" value="No" required> No
                                     @elseif ($question->type == 'number')
                                         <input type="number" name="answers[{{ $question->id }}]" min="0" required class="form-control">
+                                    @elseif ($question->type == "select")
+                                        <select name="answers[{{ $question->id }}]" class="form-control" required>
+                                            @foreach (json_decode($question->question_json_items) as $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
                                     @else
                                         <textarea name="answers[{{ $question->id }}]" class="form-control"></textarea>
                                     @endif
@@ -360,6 +447,14 @@
                                     @if ($question->type == 'radio')
                                         <input type="radio" name="answers[{{ $question->id }}]" value="Si" required> Si
                                         <input type="radio" name="answers[{{ $question->id }}]" value="No" required> No
+                                    @elseif ($question->type == 'number')
+                                        <input type="number" name="answers[{{ $question->id }}]" min="0" required class="form-control">
+                                    @elseif ($question->type == "select")
+                                        <select name="answers[{{ $question->id }}]" class="form-control" required>
+                                            @foreach (json_decode($question->question_json_items) as $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
                                     @else
                                         <textarea name="answers[{{ $question->id }}]" class="form-control"></textarea>
                                     @endif
@@ -369,31 +464,71 @@
                             </div>
                             @endforeach
                         </div>
-                        <div class="row">
-                            <hr>
-                            <br>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="form-group">
-                                    <label for="information_obtained_by">Dónde se enteró del programa:</label>
-                                    <select name="information_obtained_by" class="form-control col-md-6">
-                                        <option value="Redes sociales">Redes sociales</option>
-                                        <option value="Municipalidad">Municipalidad</option>
-                                        <option value="Iglesia">Iglesia</option>
-                                        <option value="Un amigo">Un amigo</option>
-                                        <option value="Internet">Internet</option>
-                                        <option value="Institución Educativa">Institución Educativa</option>
-                                        <option value="Institución de Gobierno">Institución de Gobierno</option>
-                                        <option value="Otros">Otros</option>
-                                    </select>
-                                </div>
-                                <br><br>
-                            </div>
+                        <div class="card-header text-center font-weight-bold bg-blue">
+                            Preguntas Generales
                         </div>
-                        <button type="submit" class="btn btn-blue">Guardar datos</button>
+                        <br>
+                        <div class="row">
+                            @foreach ($generalQuestions as $question)
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="answers[{{ $question->id }}]">{{ $question->question }}</label>
+                                    <br>
+                                    @if ($question->description != '')
+                                        <small>{{ $question->description }}</small>
+                                    @endif
+                                    <br><br>
+                                    @if ($question->type == 'radio')
+                                        <input type="radio" name="answers[{{ $question->id }}]" value="Si" required> Si
+                                        <input type="radio" name="answers[{{ $question->id }}]" value="No" required> No
+                                    @elseif ($question->type == 'number')
+                                        <input type="number" name="answers[{{ $question->id }}]" min="0" required class="form-control">
+                                    @elseif ($question->type == "select")
+                                        <select name="answers[{{ $question->id }}]" class="form-control" required>
+                                            @foreach (json_decode($question->question_json_items) as $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
+                                    @else
+                                        <textarea name="answers[{{ $question->id }}]" class="form-control"></textarea>
+                                    @endif
+                                    <input type="hidden" name="question_ids[{{ $question->id }}]" value="{{ $question->id }}">
+                                </div>
+                                <br>
+                            </div>
+                            @endforeach
+                        </div>
+                        <button type="submit" class="btn btn-blue" id="btn-save-data" disabled="true">Guardar datos</button>
                         {{--  --}}
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<!-- Main Information Modal -->
+<div id="mainInformationModal" class="modal fade">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h2 class="modal-title text-center">¡Bienvenido al espacio de inscripción al Programa de Movilidad Laboral Visas H-2!</h2>
+            </div>
+            <div class="modal-body">
+                <p>En esta plataforma podrá inscribirse al programa y participar legalmente en las plazas temporales de empleo a través de una visa H-2.</p>
+                <p>Existen dos categorías principales dentro del programa: la visa H-2A, destinada para trabajo temporal en el sector agrícola, y la H-2B, para trabajo temporal o estacional no agrícola, como construcción, silvicultura, paisajismo, entre otros tipos de industria.</p>
+                <p>Para inscribirse al programa deberá llenar el formulario de inscripción que verá a continuación. Le recomendamos leer bien las preguntas y responder lo más exacto y honesto posible ya que la información será validada.</p>
+                <br>
+                <h5>ACLARATORIA:</h5>
+                <ul>
+                    <li>Participar en el Programa de Movilidad Laboral Visas H-2 es COMPLETAMENTE GRATUITO, por lo que ninguna persona o entidad puede solicitarle ningún tipo de contribución económica. Si usted ha sido contactado por otras instancias solicitando algún tipo de remuneración económica, le pedimos que pueda denunciar al siguiente correo: <a href="mailto:denunciasv@state.gov" target="_blanck">denunciasv@state.gov</a>
+                    </li>
+                    <li>Le recordamos que esto es una inscripción a la base de aplicantes, no es una aplicación a visa o solicitud de visa. Este es el primer paso para que su perfil pueda ser evaluado por empresas contratantes en los Estados Unidos según las características requeridas.</li>
+                    <li>Posterior al llenado del formulario, sí cumple con los requisitos, un miembro del <b>Programa de Movilidad Laboral Visas H-2</b> se pondrá en contacto para explicarle los siguientes pasos.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-blue" data-bs-dismiss="modal">Aceptar</button>
+            </div>
         </div>
     </div>
 </div>

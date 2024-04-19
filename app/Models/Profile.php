@@ -15,11 +15,11 @@ class Profile extends Model
         'date_of_birth',
         'age',
         'phone_number',
+        'secondary_phone_number',
         'email',
         'academic_level_id',
-        'desired_job',
-        'city',
-        'state',
+        'state_id',
+        'township_id',
         'english_level_id',
         'children_live_with_me',
         'children_dont_live_with_me',
@@ -28,7 +28,6 @@ class Profile extends Model
         'has_passport',
         'gender',
         'employment_status',
-        'information_obtained_by',
     ];
 
     /**

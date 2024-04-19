@@ -13,6 +13,9 @@ class AcademicLevelsSeeder extends Seeder
     public function run(): void
     {
         AcademicLevel::create([
+            'name' => 'No posee estudios académicos'
+        ]);
+        AcademicLevel::create([
             'name' => 'Primaria'
         ]);
         AcademicLevel::create([
@@ -22,10 +25,19 @@ class AcademicLevelsSeeder extends Seeder
             'name' => 'Bachillerato'
         ]);
         AcademicLevel::create([
+            'name' => 'Técnico'
+        ]);
+        AcademicLevel::create([
             'name' => 'Universidad'
         ]);
         AcademicLevel::create([
-            'name' => 'Técnico'
+            'name' => 'Especialización'
+        ]);
+        AcademicLevel::create([
+            'name' => 'Maestría'
+        ]);
+        AcademicLevel::create([
+            'name' => 'Doctorado'
         ]);
     }
 }

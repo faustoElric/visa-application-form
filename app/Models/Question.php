@@ -9,6 +9,14 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'question',
+        'description',
+        'section',
+        'type',
+        'question_json_items',
+    ];
+
     /**
      * Get the answer that has the Question.
      */

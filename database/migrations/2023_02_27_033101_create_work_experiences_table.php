@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('profile_id')->nullable();
             $table->string('position');
             $table->string('time_worked');
-            $table->string('date_worked');
+            $table->date('start_date_worked');
+            $table->date('end_date_worked');
             $table->string('company');
             $table->text('activity');
             $table->text('tool_used');
