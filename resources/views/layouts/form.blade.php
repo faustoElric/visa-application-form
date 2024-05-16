@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <div class="bg-white row">
+        <div class="bg-white row" style="margin: 0%">
             <div class="col-4 offset-2 col-md-3 offset-md-3 col-xl-2 offset-xl-4 pt-4 pb-4 text-center">
                 <br>
                 <img src="{{url('images/usaid_logo.png')}}" class="img-fluid" id="usaid">

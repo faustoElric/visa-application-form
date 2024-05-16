@@ -190,7 +190,7 @@ $(document).ready(function() {
             url: '/check-dui/'+dui,
             success: function(data){
                 if (data.statusCode == 200) {
-                    var message = 'El Número DUI ya ha sido registrado con anterioridad. Por favor verifique el número DUI e intente de nuevo. Si el inconvenient persiste pongase en contacto con nosotros.'
+                    var message = 'El Número DUI ya ha sido registrado con anterioridad. Por favor verifique el número DUI e intente de nuevo. Si el inconveniente persiste pongase en contacto con nosotros.'
                     alert(message);
                     $('#btn-save-data').prop("disabled", true);
                 } else {
@@ -202,4 +202,92 @@ $(document).ready(function() {
             },
         });
     });
+
+    $('#add-profile-form').click(function(event) {
+        var vacio = false;
+
+        // Validación para radio buttons
+        $('.input-validar').each(function() {
+            var radioGroup = $(this).closest('.form-group').find('input[type="radio"]');
+            var algunSeleccionado = false;
+
+            radioGroup.each(function() {
+                if ($(this).is(':checked')) {
+                    algunSeleccionado = true;
+                }
+            });
+
+            if (algunSeleccionado) {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide();
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').show();
+            }
+        });
+
+        // Validación para selectores (elementos <select>)
+        $('select.input-validar').each(function() {
+            if ($(this).val() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al selector vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al selector seleccionado
+            }
+        });
+
+        // Validación para inputs de texto
+        $('input[type="text"].input-validar').each(function() {
+            if ($(this).val().trim() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al input de texto vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al input de texto no vacío
+            }
+        });
+
+         // Validación para inputs de email
+         $('input[type="email"].input-validar').each(function() {
+            if ($(this).val().trim() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al input de texto vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al input de texto no vacío
+            }
+        });
+
+        // Validación para inputs de fecha
+        $('input[type="date"].input-validar').each(function() {
+            if ($(this).val().trim() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al input de texto vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al input de texto no vacío
+            }
+        });
+
+        // Validación para inputs de numero
+        $('input[type="number"].input-validar').each(function() {
+            if ($(this).val().trim() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al input de texto vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al input de texto no vacío
+            }
+        });
+
+        // Validación para inputs de texto
+        $('textarea.input-validar').each(function() {
+            if ($(this).val().trim() === '') {
+                //vacio = true;
+                $(this).closest('.form-group').find('.mensaje-alerta').show(); // Mostrar el mensaje de alerta asociado al input de texto vacío
+            } else {
+                $(this).closest('.form-group').find('.mensaje-alerta').hide(); // Ocultar el mensaje de alerta asociado al input de texto no vacío
+            }
+        });
+
+        if (vacio) {
+            //event.preventDefault(); // Evitar que se envíe el formulario
+        }
+    });
 });
+
+var vacio = true;
