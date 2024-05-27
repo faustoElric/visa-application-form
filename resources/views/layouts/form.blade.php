@@ -24,13 +24,20 @@
 </head>
 <body>
     <div id="app">
+        <div class="header-second" style="margin: 0%">
+            <div class="container">
+                <div class="col-12">
+                    Este es un sitio oficial de <a href="https://www.usaid.gov/es/el-salvador" target="_blank">USAID</a> y <a href="https://rree.gob.sv" target="_blank">Ministerio de Relaciones Exteriores de El Salvador</a>
+                </div>
+            </div>
+        </div>
         <div class="bg-white row" style="margin: 0%">
             <div class="col-4 offset-2 col-md-3 offset-md-3 col-xl-2 offset-xl-4 pt-4 pb-4 text-center">
                 <br>
-                <img src="{{url('images/usaid_logo.png')}}" class="img-fluid" id="usaid">
+                <img src="{{url('images/usaid_logo.png')}}" class="img-fluid" id="usaid" alt="USAID">
             </div>
             <div class="col-4 offset-2 col-md-3 offset-md-0 col-xl-2 pt-4 pb-4 text-center">
-                <img src="{{url('images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid" id="mre">
+                <img src="{{url('images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid" id="mre" alt="Ministerio de Relaciones Exteriores de El Salvador">
             </div>
         </div>
         <main>

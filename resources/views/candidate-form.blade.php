@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="container">
+            <img src="{{url('images/main-banner.jpg')}}" class="img-fluid" alt="Main Banner">
+        </div>
         <div class="container mt-4">
             @if(session('success'))
                 <div class="alert alert-success">
@@ -21,9 +24,10 @@
             @endif
             <form name="add-profile-form" id="add-profile-form" action="{{ route('candidate-form-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <br>
-                <h5 class="text-center">¡Muchas gracias por tu interés! Por favor llena el siguiente formulario, estaremos notificandote los resultados pronto.</h5>
-                <br>
+                <br><br>
+                <h2 class="text-center"><b>¡Muchas gracias por tu interés!</b></h2>
+                <h3 class="text-center">Por favor llena el siguiente formulario, estaremos notificandote los resultados pronto.</h3>
+                <br><br>
                 <div class="card">
                     <div class="card-header text-center font-weight-bold bg-blue">
                         Perfil de Candidato
