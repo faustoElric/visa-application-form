@@ -137,56 +137,81 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $profiles = Profile::all();
-        $civilStatuses = CivilStatus::all();
+        $englishLevels = EnglishLevel::all();
         $academicLevels = AcademicLevel::all();
 
         if ($request->ajax()) {
+            $data = Profile::with('workExperiences')->select('*');
 
-            $data = Profile::select('*');
+            $data = Profile::with(['workExperiences' => function ($query) use ($request) {
+                // Filtrar por posición en las experiencias laborales
+                if ($request->get('position')) {
+                    $query->where('position', 'like', '%' . $request->input('position') . '%');
+                }
+            }])->select('*');
 
             return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->filter(function ($instance) use ($request) {
-                        if ($request->get('civil_status_id')) {
-                            $instance->where('civil_status_id', $request->get('civil_status_id'));
-                        }
-                        if ($request->get('academic_level_id')) {
-                            $instance->where('academic_level_id', $request->get('academic_level_id'));
-                        }
-                        if ($request->get('start_date') && $request->get('end_date')) {
-                            $instance->whereBetween('date_of_birth', [$request->get('start_date'), $request->get('end_date')]);
-                        }
-                        if ($request->get('start_date'))  {
-                            $instance->whereBetween('date_of_birth', [$request->get('start_date'), Carbon::now()->format('Y-m-d')]);
-                        }
-                        if ($request->get('end_date'))  {
-                            $instance->whereBetween('date_of_birth', ['1900-01-01', $request->get('end_date')]);
-                        }
-                        if (!empty($request->get('search'))) {
-                             $instance->where(function($w) use($request){
-                                $search = $request->get('search');
-                                $w->orWhere('name', 'LIKE', "%$search%")
-                                ->orWhere('email', 'LIKE', "%$search%");
-                            });
-                        }
-                    })
-                    ->addColumn('birthday', function ($data) {
-                        return Carbon::createFromFormat('Y-m-d', $data->date_of_birth)->format('d-m-Y');
-                    })
-                    ->addColumn('createdAt', function ($data) {
-                        return Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d-m-Y H:i:s');
-                    })
-                    ->addColumn('showProfile', function ($data) {
-                        return "<a href='" . url("admin/profiles", $data->id) ."'>Ver perfil</a>";
-                    })
-
-                    ->rawColumns(['showProfile', 'birthday', 'createdAt'])
-                    ->make(true);
+                ->addIndexColumn()
+                ->filter(function ($query) use ($request) {
+                    // Filtrar por tipo de visa
+                    if ($request->get('visa_type')) {
+                        $query->where('visa_type', $request->input('visa_type'));
+                    }
+                    // Filtrar por género
+                    if ($request->get('gender')) {
+                        $query->where('gender', $request->input('gender'));
+                    }
+                    // Filtrar por rango de edad
+                    if ($request->get('min_age') && $request->get('max_age')) {
+                        $query->whereBetween('age', [$request->input('min_age'), $request->input('max_age')]);
+                    } elseif ($request->get('min_age')) {
+                        $query->where('age', '>=', $request->input('min_age'));
+                    } elseif ($request->get('max_age')) {
+                        $query->where('age', '<=', $request->input('max_age'));
+                    }
+                    // Filtrar por nivel de inglés
+                    if ($request->get('english_level_id')) {
+                        $query->where('english_level_id', $request->input('english_level_id'));
+                    }
+                    // Filtrar por rango de fecha de creación
+                    if ($request->get('start_date') && $request->get('end_date')) {
+                        $startDate = Carbon::createFromFormat('Y-m-d', $request->input('start_date'))->startOfDay();
+                        $endDate = Carbon::createFromFormat('Y-m-d', $request->input('end_date'))->endOfDay();
+                        $query->whereBetween('created_at', [$startDate, $endDate]);
+                    } elseif ($request->get('start_date')) {
+                        $startDate = Carbon::createFromFormat('Y-m-d', $request->input('start_date'))->startOfDay();
+                        $query->where('created_at', '>=', $startDate);
+                    } elseif ($request->get('end_date')) {
+                        $endDate = Carbon::createFromFormat('Y-m-d', $request->input('end_date'))->endOfDay();
+                        $query->where('created_at', '<=', $endDate);
+                    }
+                    // Filtrar por nombre, DUI, número de teléfono o email
+                    if ($request->filled('search')) {
+                        $search = $request->input('search');
+                        $query->where(function ($q) use ($search) {
+                            $q->where('name', 'like', "%$search%")
+                                ->orWhere('dui', 'like', "%$search%")
+                                ->orWhere('phone_number', 'like', "%$search%")
+                                ->orWhere('email', 'like', "%$search%");
+                        });
+                    }
+                })
+                ->addColumn('birthday', function ($data) {
+                    return Carbon::parse($data->date_of_birth)->format('d-m-Y');
+                })
+                ->addColumn('createdAt', function ($data) {
+                    return Carbon::parse($data->created_at)->format('d-m-Y H:i:s');
+                })
+                ->addColumn('showProfile', function ($data) {
+                    return "<a href='" . url("admin/profiles", $data->id) . "'>Ver perfil</a>";
+                })
+                ->rawColumns(['showProfile', 'birthday', 'createdAt'])
+                ->make(true);
         }
 
         return view('admin.profiles.index')
             ->with('profiles', $profiles)
-            ->with('civilStatuses', $civilStatuses)
+            ->with('englishLevels', $englishLevels)
             ->with('academicLevels', $academicLevels);
     }
 

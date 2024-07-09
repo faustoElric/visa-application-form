@@ -90,11 +90,15 @@ $(document).ready(function() {
             ajax: {
               url: "profiles",
               data: function (d) {
-                    d.civil_status_id = $('#civil_status_id').val(),
-                    d.search = $('input[type="search"]').val(),
-                    d.academic_level_id = $('#academic_level_id').val(),
+                    d.visa_type = $('#visa_type').val(),
+                    d.position = $('#position').val(),
+                    d.gender = $('#gender').val(),
+                    d.min_age = $('#min_age').val(),
+                    d.max_age = $('#max_age').val(),
+                    d.english_level_id = $('#english_level_id').val(),
                     d.start_date = $('#start_date').val(),
-                    d.end_date = $('#end_date').val()
+                    d.end_date = $('#end_date').val(),
+                    d.search = $('input[type="search"]').val()
                 }
             },
             columns: [
@@ -121,11 +125,27 @@ $(document).ready(function() {
             }
         });
 
-        $('#civil_status_id').change(function(){
+        $('#visa_type').change(function(){
             table.draw();
         });
 
-        $('#academic_level_id').change(function(){
+        $('#position').change(function(){
+            table.draw();
+        });
+
+        $('#gender').change(function(){
+            table.draw();
+        });
+
+        $('#min_age').change(function(){
+            table.draw();
+        });
+
+        $('#max_age').change(function(){
+            table.draw();
+        });
+
+        $('#english_level_id').change(function(){
             table.draw();
         });
 

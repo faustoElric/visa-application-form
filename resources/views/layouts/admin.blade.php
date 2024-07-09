@@ -28,7 +28,10 @@
         <nav class="navbar navbar-expand-md bg-purple shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/admin/profiles') }}">
-                    <img src="{{url('storage/images/Logo-search-latam-header.png')}}" class="img-fluid" width="200px">
+                    <img src="{{url('images/usaid_logo.png')}}" class="img-fluid" width="200px" alt="USAID">
+                </a>
+                <a class="navbar-brand" href="{{ url('/admin/profiles') }}">
+                    <img src="{{url('images/ministerio_relaciones_exteriores_logo.png')}}" class="img-fluid" id="mre" width="200px" alt="Ministerio de Relaciones Exteriores de El Salvador">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
