@@ -77,4 +77,20 @@ class Profile extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    /**
+     * Get the state of the profile.
+     */
+    public function state()
+    {
+        return $this->hasOne(Answer::class);
+    }
+
+    /**
+     * Get the township of the profile.
+     */
+    public function township()
+    {
+        return $this->hasOne(Answer::class);
+    }
 }

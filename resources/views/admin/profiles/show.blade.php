@@ -4,15 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="row">
-            <div class="col-md-9 margin-tb">
+            <div class="col-md-10 margin-tb">
                 <div class="pull-left">
-                    <h4><small>Perfil de Candidato:</small>&nbsp;&nbsp;{{ $profile->name }} {{ $profile->lastname }}</h4>
+                    <h4><small>Perfil de Candidato:</small></h4>
+                    <h2 class="text-center">{{ $profile->name }} {{ $profile->lastname }}</h2>
                     <hr>
                 </div>
             </div>
-            <div class="col-md-3 margin-tb">
+            <div class="col-md-2 margin-tb">
                 <div class="pull-right">
-                    <a class="btn btn-orange" href="{{ route('admin.profiles.index') }}">
+                    <a class="btn btn-blue" href="{{ route('admin.profiles.index') }}">
                         Regresar
                     </a>
                 </div>
@@ -21,98 +22,127 @@
         <br>
         <div class="container mt-4">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-orange">
+                <div class="card-header text-center font-weight-bold bg-blue">
                     Datos Personales
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="name"><b>Nombre:</b></label><br>
-                        {{ $profile->name }}
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="lastname"><b>Apellidos:</b></label><br>
-                        {{ $profile->lastname }}
-                    </div>
-                    <br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="date_of_birth"><b>Fecha de Nacimiento:</b></label><br>
+                                <label for="visa_type">Tipo de Visa:</label><br>
+                                {{ $profile->visa_type }}
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="has_passport">¿Tiene Pasaporte?</label><br>
+                                {{ $profile->has_passport }}
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Nombre:</label><br>
+                                {{ $profile->name }}
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastname">Apellidos:</label><br>
+                                {{ $profile->lastname }}
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="date_of_birth">DOB (Fecha de Nacimiento):</label>
                                 {{ $profile->date_of_birth }}
+                                <br>
                             </div>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="civil_status_id"><b>Estado civil:</b></label><br>
-                                {{ $profile->civilStatus->name }}
-                            </div>
-                            <br>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="phone_number"><b>Teléfono:</b></label><br>
+                                <label for="dui">DUI:</label>
+                                {{ $profile->dui }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="gender">Sexo:</label><br>
+                                {{ $profile->gender }}
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="phone_number">Número de Teléfono:</label>
                                 {{ $profile->phone_number }}
+                                <br>
                             </div>
-                            <br>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="secondary_phone_number">Número de Teléfono secundario:</label><br>
+                                {{ $profile->secondary_phone_number }}
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico:</label>
+                                {{ $profile->email }}
+                                <br>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="email"><b>Correo Electrónico:</b></label><br>
-                                {{ $profile->email }}
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="academic_level_id"><b>Nivel académico:</b></label><br>
+                                <label for="academic_level_id">Nivel académico:</label>
                                 {{ $profile->academicLevel->name }}
+                                <br>
                             </div>
-                            <br>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="desired_job"><b>Trabajo deseado:</b></label><br>
-                        {{ $profile->desired_job }}
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="city"><b>Ciudad:</b></label><br>
-                        {{ $profile->city }}
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="state"><b>Departamento:</b></label><br>
-                        {{ $profile->state }}
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label><b>Inglés</b></label>
-                        <hr>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="english_listening_level_id"><var>Nivel de escucha para idioma inglés:</var></label><br>
-                                {{ $profile->english_listening_level_id }}
+                                <label for="state_id">Departamento:</label><br>
+                                {{ $profile->state->name }}
+                                <br>
                             </div>
-                            <br>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="english_speaking_level_id"><var>Nivel de habla para idioma inglés:</var></label><br>
-                                {{ $profile->english_speaking_level_id }}
+                                <label for="township_id">Municipio:</label><br>
+                                {{ $profile->township->name }}
+                                <br>
                             </div>
-                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="employment_status">Estado de Empleo:</label>
+                                {{ $profile->employment_status }}
+                                <br>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -122,20 +152,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="children_live_with_me"> <var>Viven conmigo</var>:</label><br>
+                                <label for="children_live_with_me"> <var>Viven conmigo:</var>:</label>
                                 {{ $profile->children_live_with_me }}
+                                <br>
                             </div>
-                            <br>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="children_dont_live_with_me"><var>No viven conmigo:</var></label><br>
-                                {{ $profile->children_dont_live_with_me }}
+                                <label for="children_dont_live_with_me">No viven conmigo:</label>
+                                {{ $profile->children_live_with_me }}
+                                <br>
                             </div>
-                            <br>
                         </div>
                     </div>
-                    <div class="card-header text-center font-weight-bold bg-orange">
+                    <div class="card-header text-center font-weight-bold bg-blue">
                         Educación o Entrenamiento
                     </div>
                     <br>
@@ -184,7 +214,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-orange">
+                    <div class="card-header text-center font-weight-bold bg-blue">
                         Experiencia laboral
                     </div>
                     <br>
@@ -239,7 +269,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-orange">
+                    <div class="card-header text-center font-weight-bold bg-blue">
                         Estatus migratorio
                     </div>
                     <br>
@@ -258,7 +288,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-orange">
+                    <div class="card-header text-center font-weight-bold bg-blue">
                         Salud
                     </div>
                     <br>
@@ -277,7 +307,7 @@
                         @endforeach
                     </div>
                     <br>
-                    <div class="card-header text-center font-weight-bold bg-orange">
+                    <div class="card-header text-center font-weight-bold bg-blue">
                         Habilidades
                     </div>
                     <br>

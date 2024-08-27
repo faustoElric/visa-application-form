@@ -24,7 +24,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container-fluid" style="min-height: 380px">
         <nav class="navbar navbar-expand-md bg-purple shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/admin/profiles') }}">
@@ -87,11 +87,11 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="bg-purple mt-4">
-            <div class="col-12 pt-4 pb-4 text-center">
-                <p>Todos los derechos reservados © {{ now()->year }}</p>
-            </div>
-        </footer>
     </div>
+    <footer class="bg-black mt-4">
+        <div class="col-12 pt-4 pb-4 text-center">
+            <p>Todos los derechos reservados © {{ now()->year }}</p>
+        </div>
+    </footer>
 </body>
 </html>

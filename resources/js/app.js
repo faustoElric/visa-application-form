@@ -137,11 +137,11 @@ $(document).ready(function() {
             table.draw();
         });
 
-        $('#min_age').change(function(){
+        $('#min_age').blur(function(){
             table.draw();
         });
 
-        $('#max_age').change(function(){
+        $('#max_age').blur(function(){
             table.draw();
         });
 
@@ -157,6 +157,9 @@ $(document).ready(function() {
             table.draw();
         });
 
+        $('#search').blur(function(){
+            table.draw();
+        });
     });
 
 
@@ -206,7 +209,7 @@ $(document).ready(function() {
         var dui = $(this).val();
 
         $.ajax({
-            type: 'get',
+            type: 'GET',
             url: '/check-dui/'+dui,
             success: function(data){
                 if (data.statusCode == 200) {
@@ -306,6 +309,21 @@ $(document).ready(function() {
 
         if (vacio) {
             //event.preventDefault(); // Evitar que se envíe el formulario
+        }
+    });
+
+    $.ajax({
+        url: '/total-counters',
+        type: 'GET',
+        success: function(response) {
+            console.log(response);
+            $('#totalMen').text(response.data.totalMen);
+            $('#totalWomen').text(response.data.totalWomen);
+        },
+        error: function() {
+            console.log('no data');
+            $('#totalMen').text('0');
+            $('#totalWomen').text('0');
         }
     });
 });

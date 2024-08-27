@@ -3,9 +3,38 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 mt-4">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold bg-blue">
+                    Total de usuarios registrados la última semana
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-10 offset-md-1 mt-4">
+                    <div class="row">
+                        <div class="col-12 col-md-3 offset-md-3 text-center mb-1">
+                            <h2>
+                                <div id="totalMen"></div>
+                            </h2>
+                            <h5>Hombres</h5>
+                        </div>
+                        <div class="col-12 col-md-3 text-center mb-1">
+                            <h2>
+                                <div id="totalWomen"></div>
+                            </h2>
+                            <h5>Mujeres</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12 col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-orange">
+                <div class="card-header text-center font-weight-bold bg-blue">
                     Filtros de búsqueda
                 </div>
                 <div class="card-body">
@@ -169,7 +198,7 @@
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 mt-4">
             <div class="card">
-                <div class="card-header text-center font-weight-bold bg-orange">
+                <div class="card-header text-center font-weight-bold bg-blue">
                     Resultados
                 </div>
             </div>
